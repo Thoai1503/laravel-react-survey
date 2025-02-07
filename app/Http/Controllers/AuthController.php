@@ -14,18 +14,15 @@ class AuthController extends Controller
     {
         $data = $request->validated();
 
-        /** @var \App\Models\User $user */
+       
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),
         ]);
         $token = $user->createToken('main')->plainTextToken;
 
-        return response([
-            'user' => $user,
-            'token' => $token
-        ]);
+        return response()->json(['user' => $user, 'token' => $token]);
     }
 
     public function login(LoginRequest $request)
@@ -35,16 +32,19 @@ class AuthController extends Controller
         unset($credentials['remember']);
 
         if (!Auth::attempt($credentials, $remember)) {
-            return response([
-                'error' => 'The Provided credentials are not correct'
-            ], 422);
+            return response(
+                [
+                    'error' => 'The Provided credentials are not correct',
+                ],
+                422,
+            );
         }
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
 
         return response([
             'user' => $user,
-            'token' => $token
+            'token' => $token,
         ]);
     }
 
@@ -56,7 +56,7 @@ class AuthController extends Controller
         $user->currentAccessToken()->delete();
 
         return response([
-            'success' => true
+            'success' => true,
         ]);
     }
 

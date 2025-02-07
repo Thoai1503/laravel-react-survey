@@ -1,4 +1,8 @@
-import { ArrowTopRightOnSquareIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowTopRightOnSquareIcon,
+  PencilIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
 import React from "react";
 import TButton from "./core/TButton";
 
@@ -22,12 +26,17 @@ export default function SurveyListItem({ survey, onDeleteClick }) {
           Edit
         </TButton>
         <div className="flex items-center">
-          <TButton href={`/view/survey/${survey.slug}`} circle link>
+          <TButton href={`/survey/${survey.slug}`} circle link>
             <ArrowTopRightOnSquareIcon className="w-5 h-5" />
           </TButton>
 
           {survey.id && (
-            <TButton onClick={ev => onDeleteClick(survey.id)} circle link color="red">
+            <TButton
+              onClick={(ev) => onDeleteClick(survey.id)}
+              circle
+              link
+              color="red"
+            >
               <TrashIcon className="w-5 h-5" />
             </TButton>
           )}

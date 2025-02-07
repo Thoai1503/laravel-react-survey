@@ -94,9 +94,7 @@ export default function SurveyView() {
     setSurvey({ ...survey });
   };
 
-  const onDelete = () => {
-
-  }
+  const onDelete = () => {};
 
   useEffect(() => {
     if (id) {
@@ -107,7 +105,6 @@ export default function SurveyView() {
       });
     }
   }, []);
-
 
   return (
     <PageComponent
@@ -225,7 +222,7 @@ export default function SurveyView() {
                   id="expire_date"
                   value={survey.expire_date}
                   onChange={(ev) =>
-                    setSurvey({ ...survey, expire_date: ev.target.value })
+                    setSurvey({ ...survey, [ev.target.name]: ev.target.value })
                   }
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />

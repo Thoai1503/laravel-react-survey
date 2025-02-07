@@ -18,7 +18,7 @@ export default function Surveys() {
     if (window.confirm("Are you sure you want to delete this survey?")) {
       axiosClient.delete(`/survey/${id}`).then(() => {
         getSurveys();
-        showToast('The survey was deleted');
+        showToast("The survey was deleted");
       });
     }
   };
@@ -43,7 +43,7 @@ export default function Surveys() {
 
   return (
     <PageComponent
-      title="Surveys"
+      title="Khảo sát"
       buttons={
         <TButton color="green" to="/surveys/create">
           <PlusCircleIcon className="h-6 w-6 mr-2" />
@@ -68,7 +68,9 @@ export default function Surveys() {
               />
             ))}
           </div>
-          {surveys.length > 0 && <PaginationLinks meta={meta} onPageClick={onPageClick} />}
+          {surveys.length > 0 && (
+            <PaginationLinks meta={meta} onPageClick={onPageClick} />
+          )}
         </div>
       )}
     </PageComponent>

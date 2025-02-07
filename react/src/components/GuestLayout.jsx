@@ -5,7 +5,7 @@ export default function GuestLayout() {
   const { userToken } = useStateContext();
 
   if (userToken) {
-    return <Navigate to="/" />
+    return <Navigate to="/" />;
   }
 
   return (
@@ -15,7 +15,7 @@ export default function GuestLayout() {
           <div>
             <img
               className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo& shade=600"
               alt="Your Company"
             />
           </div>
@@ -24,5 +24,5 @@ export default function GuestLayout() {
         </div>
       </div>
     </div>
-  )
+  );
 }
